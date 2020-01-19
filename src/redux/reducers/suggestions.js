@@ -1,21 +1,18 @@
-//guardara un arreglo de sugestiones, por eso es []
-const defaultState = [
-    {
-        id:1,
-        text: "hola"
-    }
-];
+import items from '../../data/items';
+
+//guardara un arreglo de sugestiones
+const defaultState = [];
 
 function reducer(state = defaultState, {type, payload}){
     switch(type){
         
-        case 'findSuggestions':
-            return [
-                {
-                    id: 1,
-                    text: 'findSuggestions',
-                }
-            ]
+        case 'findSuggestions':{
+            //buscara sugerencias dependiendo del texto colocado en el imput
+            //se crea una expresion regular para filtrar los items 
+            const redex = new RegExp(`^${payload}`,'i')
+
+            return items.filter(item => redex.test(item.title));
+        }
 
         default:
             return state;

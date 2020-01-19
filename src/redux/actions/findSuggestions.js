@@ -1,9 +1,7 @@
 const findSuggestions = text =>{
     return {
         type: 'findSuggestions',
-        payload: {
-            text
-        }
+        payload:text
 
     }
 }

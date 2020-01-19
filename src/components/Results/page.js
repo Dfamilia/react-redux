@@ -1,12 +1,21 @@
 import React, { Component, Fragment } from 'react';
 import './styles.css';
+import AppBar from '../appBar';
 
-export default class Page extends Component {
+//es buena practica quitar conflictos entre los estilos de las paginas o componentes
+//a travez de @material-ui tenemos: OPCIONAL
+import CssBaseLine from '@material-ui/core/CssBaseline';
+
+class Page extends Component {
     render() {
         return (
             <Fragment>
-                <h2>React - Results</h2>
+                <CssBaseLine />
+                
+                <AppBar />
             </Fragment>
         )
     }
 }
+
+export default Page;
