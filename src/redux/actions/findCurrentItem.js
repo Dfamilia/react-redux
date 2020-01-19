@@ -1,10 +1,7 @@
 const findCurrentItem = id =>{
     return {
         type: 'findCurrentItem',
-        payload: {
-            id
-        }
-
+        payload: id
     }
 }
 

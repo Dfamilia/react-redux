@@ -3,13 +3,26 @@ import Page from './page'
 //conecta a redux con el componente a travez de react-redux/connect
 import { connect } from 'react-redux';
 
+//utilizamos withRouter para poder navegar a otras pantalla
+import { withRouter } from 'react-router-dom';
+
 // 1- creo mi componente
 class Results extends Component {
     render() {
-        console.log(this.props.suggestions)
+
+        //obtenemos results desde redux, por medio de connect
+        const { results }= this.props;
+
         return (
             <div>
-                <Page />
+                <Page 
+                    results={results}
+                    // obtenemos el history de rutas por medio de withRouter
+                    goTo={(path)=>{
+                        this.props.history.push(path);
+                    }}
+
+                />
             </div>
         )
     }
@@ -20,7 +33,7 @@ class Results extends Component {
 const mapStateToProps = (state) =>{
     //la propiedad que retornes podra ser utilizada por tu componente en forma de props
     return {
-        suggestions: state.suggestions
+        results: state.results
     }
 
 }
@@ -39,4 +52,7 @@ const mapStateToProps = (state) =>{
 // export default component;
 
 // B- forma rapida
-export default connect(mapStateToProps)(Results);
+export default withRouter(
+    connect(mapStateToProps)(Results)
+    );
+
