@@ -1,10 +1,11 @@
-const findResults = (text) =>
-({
-    type: 'findResults',
-    payload:{
-        text
-    }
+const findResults = text =>{
+    return {
+        type: 'findResults',
+        payload: {
+            text
+        }
 
-});
+    }
+}
 
 export default findResults;
